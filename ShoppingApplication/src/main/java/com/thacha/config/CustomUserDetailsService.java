@@ -1,7 +1,7 @@
 package com.thacha.config;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,7 +28,10 @@ public class CustomUserDetailsService implements UserDetailsService{
 	}
 
 	private Collection<? extends GrantedAuthority> getAuthorities(User user) {
-		return user.getRoles().stream().map(role-> new SimpleGrantedAuthority(role.name())).collect(Collectors.toSet());
+//		return user.getRoles().stream().map(role-> new SimpleGrantedAuthority(role.name())).collect(Collectors.toSet());
+		return List.of(
+		        new SimpleGrantedAuthority("ROLE_" + user.getRole().name())
+			    );
 	}
 
 }

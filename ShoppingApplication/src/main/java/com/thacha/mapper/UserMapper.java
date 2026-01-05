@@ -11,7 +11,7 @@ import com.thacha.entity.User;
 public interface UserMapper {
 	
 	@Mapping(target = "id" , ignore = true)
-	@Mapping(source="roles",target="roles")
+	@Mapping( source="role",target="role")
 	User mapSignUpRequestToUser(SignupRequest signUpRequest);
 	
 	@Mapping(target = "password",ignore = true)

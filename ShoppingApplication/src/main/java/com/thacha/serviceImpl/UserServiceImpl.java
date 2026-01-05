@@ -12,6 +12,7 @@ import com.thacha.dto.JwtResponse;
 import com.thacha.dto.LoginRequest;
 import com.thacha.dto.SignupRequest;
 import com.thacha.dto.SignupResponse;
+import com.thacha.entity.Role;
 import com.thacha.entity.User;
 import com.thacha.exception.EmailAlreadyExistsException;
 import com.thacha.exception.PasswordMisMatchException;
@@ -48,6 +49,7 @@ public class UserServiceImpl implements UserService {
 			throw new PasswordMisMatchException(
 					String.format("Confirm password %s is mismatched", signupRequest.getConfirmPassword()));
 		}
+		signupRequest.setRole(Role.ROLE_USER);
 		User user = userMapper.mapSignUpRequestToUser(signupRequest);
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setConfirmPassword(passwordEncoder.encode(user.getConfirmPassword()));

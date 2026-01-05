@@ -29,5 +29,5 @@ public class SignupRequest {
 	@Size(min=8 , max=16 , message="Password must be 8-16 characters")
 	private String confirmPassword;
 	
-	private Set<Role> roles;
+	private Role role;
 }
